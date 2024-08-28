@@ -1,0 +1,116 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  height: 550px;
+  width: 50%;
+  border: solid 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+}
+
+main {
+  margin: 10px auto 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+button {
+  padding: 15px;
+  margin: 7px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(5, 190, 5);
+}
+
+.timerDiv {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.questions {
+  margin: 25px auto 0 auto;
+  width: 50%;
+}
+.options button {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.displayTotalScore {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(1, 49, 1);
+  color: white;
+}
+
+.finalPContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 500px;
+  width: 50%;
+  border: solid 5px;
+  padding: 50px 0 50px 150px;
+}
+
+.finalMain {
+  margin: 50px;
+  width: 90%;
+}
+
+dialog::backdrop {
+  background-color: rgb(112, 110, 110);
+  opacity: 0.8;
+}
+
+dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.warningTime {
+  display: flex;
+  margin: 0;
+  padding: 5px;
+  height: 25px;
+  background-color: rgb(250, 174, 146);
+  align-items: center;
+  justify-content: center;
+}
+
+.questionList {
+  padding: 15px;
+  margin: 10px;
+  background-color: rgb(247, 230, 209);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.questionListContainer {
+  display: block;
+  position: absolute;
+  text-align: left;
+  /* padding: 10px;
+  margin: 10px; */
+}
