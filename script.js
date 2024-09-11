@@ -1,39 +1,6 @@
 // console.log(" document ## ", document);
 import { quesionsArray } from "./data.js";
 
-// let quesionsArray = [
-//   {
-//     key: "1",
-//     ques: "Example of sementic HTML?",
-//     options: ["div", "span", "header", "img"],
-//     ans: "header",
-//     attempted: undefined,
-//   },
-//   {
-//     key: "2",
-//     ques: "difference javascript and react?",
-//     options: ["library", "tool", "langauge", "db"],
-//     ans: "library",
-//     attempted: undefined,
-//   },
-//   {
-//     key: "3",
-//     ques: "which database follow ACID property",
-//     options: ["mySql", "mongoDB", "redis", "dynomoDB"],
-//     ans: "mySql",
-//     attempted: undefined,
-//   },
-//   {
-//     key: "4",
-//     ques: "Example Example Example?",
-//     options: ["div", "span", "header", "img"],
-//     ans: "header",
-//     attempted: undefined,
-//   },
-// ];
-
-// let answersAttempted = {};
-
 let startQuizBtn = document.querySelector("#startQuiz");
 let landingScreenEl = document.querySelector("#starting-page");
 let question = document.getElementById("question");
@@ -56,26 +23,15 @@ let finalScoreDialogButtonClose = document.getElementById(
 );
 
 //******************************************************************************
-//Dashboard
 
-// let questionListContainer = document.getElementById("questionListContainer");
-// questionListContainer.innerHTML = "";
-
-// quesionsArray.map((each) => {
-//   let question = document.createElement("div");
-//   question.textContent = each.ques;
-//   question.setAttribute("class", "questionList");
-//   question.setAttribute("onclick", "testingOnClick()");
-//   questionListContainer.appendChild(question);
-// });
-// questionListPrepration.setAttribute("class", "questionList");
-// questionListPrepration.setAttribute("onClick", "testingOnClick()");
-
-//******************************************************************************
+localStorage.setItem("dataArray", JSON.stringify(quesionsArray));
 
 let warningDisplay = document.getElementById("warningDisplay");
 
 function quizStart() {
+  //****************************************
+  localStorage.setItem("myCat", "Tom");
+  //****************************************
   let questionsIndex = 0;
   let totalScore = 0;
   let time = 10;
@@ -108,13 +64,11 @@ function quizStart() {
   submitButton.onclick = buttonClickedSubmit;
   previousButton.onclick = buttonClickedPrevious;
 
-  // function buttonClickedAnswer(e) {
-  //   quesionsArray[0].attempted = e.target.value;
-  //   console.log("quesionsArray @@", quesionsArray);
-  // }
-
   function buttonClickedNext(e) {
-    if (questionsIndex <= quesionsArray.length - 2) {
+    let quesionsArrayLocalStorage = JSON.parse(
+      localStorage.getItem("dataArray")
+    );
+    if (questionsIndex <= quesionsArrayLocalStorage.length - 2) {
       questionsIndex = questionsIndex + 1;
       navigateQuestionFun(questionsIndex);
     }
@@ -127,7 +81,10 @@ function quizStart() {
   }
 
   function buttonClickedSubmit() {
-    quesionsArray.forEach((each) => {
+    let quesionsArrayLocalStorage = JSON.parse(
+      localStorage.getItem("dataArray")
+    );
+    quesionsArrayLocalStorage.forEach((each) => {
       if (each.ans === each.attempted) {
         totalScore = totalScore + 1;
       }
@@ -143,17 +100,20 @@ function quizStart() {
 }
 
 function navigateQuestionFun(questionsIndex) {
+  let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
+
   questionsIndex == "0"
     ? previousButton.setAttribute("disabled", "true")
     : previousButton.removeAttribute("disabled");
 
-  questionsIndex == quesionsArray.length - 1
+  questionsIndex == quesionsArrayLocalStorage.length - 1
     ? nextButton.setAttribute("disabled", "true")
     : nextButton.removeAttribute("disabled");
 
   optionsDiv.innerHTML = "";
-  question.innerHTML = quesionsArray[questionsIndex].ques;
-  quesionsArray[questionsIndex].options.forEach((o, i) => {
+
+  question.innerHTML = quesionsArrayLocalStorage[questionsIndex].ques;
+  quesionsArrayLocalStorage[questionsIndex].options.forEach((o, i) => {
     let button = document.createElement("button");
     button.textContent = `${i + 1}. ${o}`;
     button.setAttribute("value", o);
@@ -163,8 +123,10 @@ function navigateQuestionFun(questionsIndex) {
 }
 
 function buttonClickedAnswer(e, questionsIndex) {
-  quesionsArray[questionsIndex].attempted = e.target.value;
-  console.log("quesionsArray @@", quesionsArray);
+  let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
+  quesionsArrayLocalStorage[questionsIndex].attempted = e.target.value;
+  localStorage.setItem("dataArray", JSON.stringify(quesionsArrayLocalStorage));
+  console.log("quesionsArrayLocalStorage &&&&&&", quesionsArrayLocalStorage);
 }
 
 function dashboardPage() {
