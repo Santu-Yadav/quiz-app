@@ -17,21 +17,21 @@
 }
 
 main {
-  margin: 10px auto 0 auto;
+  margin: 45px auto 0 auto;
   text-align: center;
   width: 50%;
 }
 
 button {
   padding: 15px;
-  margin: 7px;
+  margin: 3px;
   background-color: lightgreen;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-button:hover {
+button button:hover {
   background-color: rgb(5, 190, 5);
 }
 
@@ -113,4 +113,66 @@ dialog {
   text-align: left;
   /* padding: 10px;
   margin: 10px; */
+}
+
+.main-questionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between each option */
+  padding: 10px 0 10px 0;
+  margin: 10px 0 10px 0;
+}
+
+.radio-group div {
+  display: flex;
+  align-items: center;
+}
+
+.radio-group input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #4caf50;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"]::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.radio-group input[type="radio"]:checked::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-group label {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.radio-group div:hover input[type="radio"] {
+  border-color: #388e3c;
+}
+
+.radio-group div:hover label {
+  color: #388e3c;
 }

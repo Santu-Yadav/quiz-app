@@ -4,6 +4,10 @@ let questionListContainer = document.getElementById("questionListContainer");
 questionListContainer.innerHTML = "";
 
 let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
+console.log(
+  "quesionsArrayLocalStorage # dashboaard @@",
+  quesionsArrayLocalStorage
+);
 
 quesionsArrayLocalStorage.forEach((each) => {
   let question = document.createElement("div");

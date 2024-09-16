@@ -29,12 +29,9 @@ localStorage.setItem("dataArray", JSON.stringify(quesionsArray));
 let warningDisplay = document.getElementById("warningDisplay");
 
 function quizStart() {
-  //****************************************
-  localStorage.setItem("myCat", "Tom");
-  //****************************************
   let questionsIndex = 0;
   let totalScore = 0;
-  let time = 10;
+  let time = 100;
   landingScreenEl.setAttribute("class", "hide");
 
   // warningDisplay.setAttribute("class", "warningTime");
@@ -85,7 +82,7 @@ function quizStart() {
       localStorage.getItem("dataArray")
     );
     quesionsArrayLocalStorage.forEach((each) => {
-      if (each.ans === each.attempted) {
+      if (each.ans === each.attempted?.toString()) {
         totalScore = totalScore + 1;
       }
     });
@@ -111,22 +108,53 @@ function navigateQuestionFun(questionsIndex) {
     : nextButton.removeAttribute("disabled");
 
   optionsDiv.innerHTML = "";
-
   question.innerHTML = quesionsArrayLocalStorage[questionsIndex].ques;
-  quesionsArrayLocalStorage[questionsIndex].options.forEach((o, i) => {
-    let button = document.createElement("button");
-    button.textContent = `${i + 1}. ${o}`;
-    button.setAttribute("value", o);
-    button.onclick = (e) => buttonClickedAnswer(e, questionsIndex);
-    optionsDiv.appendChild(button);
+  // quesionsArrayLocalStorage[questionsIndex].options.forEach((o, i) => {
+  //   let button = document.createElement("button");
+  //   button.textContent = `${i + 1}. ${o}`;
+  //   button.setAttribute("value", o);
+  //   button.onclick = (e) => buttonClickedAnswer(e, questionsIndex);
+  //   optionsDiv.appendChild(button);
+  // });
+  //***************************************************************************
+  quesionsArrayLocalStorage[questionsIndex].options.forEach((option, i) => {
+    let div = document.createElement("div");
+    let input = document.createElement("input");
+    input.setAttribute("type", "radio");
+    input.setAttribute("name", `options_${questionsIndex}`);
+    input.setAttribute("value", `${option}`);
+    input.setAttribute("id", `name_${option}`);
+    input.onclick = (e) => buttonClickedAnswer(e, questionsIndex);
+    div.appendChild(input);
+
+    let label = document.createElement("label");
+    label.textContent = `${option}`;
+    label.setAttribute("for", `name_${option}`);
+    div.appendChild(label);
+    optionsDiv.appendChild(div);
   });
+  //***************************************************************************
+  // const fragment = document.createDocumentFragment();
+
+  // quesionsArrayLocalStorage[questionsIndex].options.forEach((option) => {
+  //   const div = document.createElement("div");
+  //   div.innerHTML = `
+  //     <input type="radio" name="options_${questionsIndex}" value="${option}" id="name_${option}">
+  //     <label for="name_${option}">${option}</label>
+  //   `;
+  //   fragment.appendChild(div);
+  // });
+
+  // optionsDiv.appendChild(fragment);
+  //***************************************************************************
 }
 
 function buttonClickedAnswer(e, questionsIndex) {
   let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
   quesionsArrayLocalStorage[questionsIndex].attempted = e.target.value;
   localStorage.setItem("dataArray", JSON.stringify(quesionsArrayLocalStorage));
-  console.log("quesionsArrayLocalStorage &&&&&&", quesionsArrayLocalStorage);
+
+  // console.log("quesionsArrayLocalStorage &&&&&&", quesionsArrayLocalStorage);
 }
 
 function dashboardPage() {
