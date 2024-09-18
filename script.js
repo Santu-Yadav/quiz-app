@@ -124,6 +124,10 @@ function navigateQuestionFun(questionsIndex) {
     input.setAttribute("name", `options_${questionsIndex}`);
     input.setAttribute("value", `${option}`);
     input.setAttribute("id", `name_${option}`);
+
+    quesionsArrayLocalStorage[questionsIndex].attempted === option &&
+      (input.checked = true);
+
     input.onclick = (e) => buttonClickedAnswer(e, questionsIndex);
     div.appendChild(input);
 
@@ -152,6 +156,7 @@ function navigateQuestionFun(questionsIndex) {
 function buttonClickedAnswer(e, questionsIndex) {
   let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
   quesionsArrayLocalStorage[questionsIndex].attempted = e.target.value;
+
   localStorage.setItem("dataArray", JSON.stringify(quesionsArrayLocalStorage));
 
   // console.log("quesionsArrayLocalStorage &&&&&&", quesionsArrayLocalStorage);
