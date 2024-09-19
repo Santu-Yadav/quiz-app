@@ -1,5 +1,8 @@
 // import { quesionsArray } from "./data.js";
 
+let gotoQuizButton = document.getElementById("gotoQuizButton");
+gotoQuizButton.onclick = gotoButtonFunc;
+
 let questionListContainer = document.getElementById("questionListContainer");
 questionListContainer.innerHTML = "";
 
@@ -19,4 +22,8 @@ quesionsArrayLocalStorage.forEach((each) => {
 
 function testingOnClick(e, each) {
   console.log("Clicked inside dashboard question list", e, each);
+}
+
+function gotoButtonFunc() {
+  document.location.href = "index.html";
 }

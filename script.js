@@ -21,12 +21,10 @@ let finalScoreDialog = document.getElementById("finalScoreDialog");
 let finalScoreDialogButtonClose = document.getElementById(
   "finalScoreDialogButtonClose"
 );
-
+let warningDisplay = document.getElementById("warningDisplay");
 //******************************************************************************
 
 localStorage.setItem("dataArray", JSON.stringify(quesionsArray));
-
-let warningDisplay = document.getElementById("warningDisplay");
 
 function quizStart() {
   let questionsIndex = 0;
