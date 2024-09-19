@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Js QUIZ</title>
+    <title>Start Page</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="container">
-      <header class="header">
-        <button id="dashboard">dashboard</button>
-        <div class="timerDiv" id="timerDiv">
-          time : <span id="timer">100</span>
-        </div>
-      </header>
+      
       <div class="hide" id="warningDisplay">3 seconds left</div>
       <main>
         <div id="starting-page">
@@ -24,25 +19,7 @@
           </p>
           <button id="startQuiz">start Quizz</button>
         </div>
-        <!-- <div class="hide" id="warningDisplay">3 seconds left</div> -->
-        <div class="main-questionContainer">
-          <div id="questionContainer">
-            <h1 id="question"></h1>
-            <div id="options" class="radio-group"></div>
-          </div>
-
-          <div class="hide" id="navigateQuiz">
-            <button id="previousButton">previous</button>
-            <button id="nextButton">next</button>
-            <button class="" id="submitButton">submit</button>
-          </div>
-        </div>
-      </main>
-    </div>
-    <dialog id="finalScoreDialog">
-      <div class="hide" id="displayTotalScore"></div>
-      <button id="finalScoreDialogButtonClose">Restart</button>
-    </dialog>
+        
     <script type="module" src="./script.js"></script>
   </body>
 </html>

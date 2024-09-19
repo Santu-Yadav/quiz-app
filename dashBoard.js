@@ -25,5 +25,5 @@ function testingOnClick(e, each) {
 }
 
 function gotoButtonFunc() {
-  document.location.href = "index.html";
+  document.location.href = "quizPage.html";
 }
