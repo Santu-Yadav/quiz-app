@@ -95,13 +95,7 @@ function navigateQuestionFun(questionsIndex) {
 
   optionsDiv.innerHTML = "";
   question.innerHTML = quesionsArrayLocalStorage[questionsIndex].ques;
-  // quesionsArrayLocalStorage[questionsIndex].options.forEach((o, i) => {
-  //   let button = document.createElement("button");
-  //   button.textContent = `${i + 1}. ${o}`;
-  //   button.setAttribute("value", o);
-  //   button.onclick = (e) => buttonClickedAnswer(e, questionsIndex);
-  //   optionsDiv.appendChild(button);
-  // });
+
   //***************************************************************************
   quesionsArrayLocalStorage[questionsIndex].options.forEach((option, i) => {
     let div = document.createElement("div");
