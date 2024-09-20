@@ -18,13 +18,19 @@ let finalScoreDialogButtonClose = document.getElementById(
 );
 let warningDisplay = document.getElementById("warningDisplay");
 
+//*******************************************************************************
+const urlParams = new URLSearchParams(window.location.search);
+const questionKeyValue = urlParams.get("questionKey");
+console.log("questionKeyValue @@", questionKeyValue);
+console.log("type-of questionKeyValue ##", typeof questionKeyValue);
+
+//******************************************************************************* */
+
 // function quizStart() {
-let questionsIndex = 0;
+let questionsIndex = Number(questionKeyValue) || 0;
 let totalScore = 0;
 let time = 100;
-// landingScreenEl.setAttribute("class", "hide");
 
-// warningDisplay.setAttribute("class", "warningTime");
 const setIntervalId = setInterval(() => {
   time = time - 1;
   if (time < 4) {
@@ -52,15 +58,18 @@ submitButton.onclick = buttonClickedSubmit;
 previousButton.onclick = buttonClickedPrevious;
 
 function buttonClickedNext(e) {
-  let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
-  if (questionsIndex <= quesionsArrayLocalStorage.length - 2) {
-    questionsIndex = questionsIndex + 1;
-    navigateQuestionFun(questionsIndex);
-  }
+  // let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
+  // if (questionsIndex <= quesionsArrayLocalStorage.length - 2) {
+  //   questionsIndex = questionsIndex + 1;
+  //   navigateQuestionFun(questionsIndex);
+  // }
+  console.log("next button clicked", questionsIndex);
+  questionsIndex = questionsIndex + 1;
+  navigateQuestionFun(questionsIndex);
 }
 
 function buttonClickedPrevious() {
-  console.log("Previous button clicked");
+  console.log("Previous button clicked", questionsIndex);
   questionsIndex = questionsIndex - 1;
   navigateQuestionFun(questionsIndex);
 }
