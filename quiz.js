@@ -21,8 +21,8 @@ let warningDisplay = document.getElementById("warningDisplay");
 //*******************************************************************************
 const urlParams = new URLSearchParams(window.location.search);
 const questionKeyValue = urlParams.get("questionKey");
-console.log("questionKeyValue @@", questionKeyValue);
-console.log("type-of questionKeyValue ##", typeof questionKeyValue);
+// console.log("questionKeyValue @@", questionKeyValue);
+// console.log("type-of questionKeyValue ##", typeof questionKeyValue);
 
 //******************************************************************************* */
 
@@ -105,6 +105,17 @@ function navigateQuestionFun(questionsIndex) {
   optionsDiv.innerHTML = "";
   question.innerHTML = quesionsArrayLocalStorage[questionsIndex].ques;
 
+  let flag = document.createElement("i");
+
+  if (quesionsArrayLocalStorage[questionsIndex].flagged) {
+    flag.setAttribute("class", "fa-regular fa-flag");
+  } else {
+    flag.setAttribute("class", "fa-solid fa-flag");
+  }
+  // flag.setAttribute("class", "fa-regular fa-flag large-icon");
+  flag.onclick = (e) => flagButtonClicked(e, questionsIndex);
+
+  question.appendChild(flag);
   //***************************************************************************
   quesionsArrayLocalStorage[questionsIndex].options.forEach((option, i) => {
     let div = document.createElement("div");
@@ -126,29 +137,21 @@ function navigateQuestionFun(questionsIndex) {
     div.appendChild(label);
     optionsDiv.appendChild(div);
   });
-  //***************************************************************************
-  // const fragment = document.createDocumentFragment();
-
-  // quesionsArrayLocalStorage[questionsIndex].options.forEach((option) => {
-  //   const div = document.createElement("div");
-  //   div.innerHTML = `
-  //     <input type="radio" name="options_${questionsIndex}" value="${option}" id="name_${option}">
-  //     <label for="name_${option}">${option}</label>
-  //   `;
-  //   fragment.appendChild(div);
-  // });
-
-  // optionsDiv.appendChild(fragment);
-  //***************************************************************************
 }
 
 function buttonClickedAnswer(e, questionsIndex) {
   let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
   quesionsArrayLocalStorage[questionsIndex].attempted = e.target.value;
+  localStorage.setItem("dataArray", JSON.stringify(quesionsArrayLocalStorage));
+}
+
+function flagButtonClicked(e, questionsIndex) {
+  let quesionsArrayLocalStorage = JSON.parse(localStorage.getItem("dataArray"));
+
+  quesionsArrayLocalStorage[questionsIndex].flagged =
+    !quesionsArrayLocalStorage[questionsIndex].flagged;
 
   localStorage.setItem("dataArray", JSON.stringify(quesionsArrayLocalStorage));
-
-  // console.log("quesionsArrayLocalStorage &&&&&&", quesionsArrayLocalStorage);
 }
 
 function dashboardPage() {
