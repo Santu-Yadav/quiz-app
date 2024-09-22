@@ -108,9 +108,17 @@ function navigateQuestionFun(questionsIndex) {
   let flag = document.createElement("i");
 
   if (quesionsArrayLocalStorage[questionsIndex].flagged) {
-    flag.setAttribute("class", "fa-regular fa-flag");
+    console.log(
+      "flagged indicator 01 #",
+      quesionsArrayLocalStorage[questionsIndex].flagged
+    );
+    flag.setAttribute("class", "fa-solid fa-flag large-icon-01");
   } else {
-    flag.setAttribute("class", "fa-solid fa-flag");
+    console.log(
+      "flagged indicator 02 #",
+      quesionsArrayLocalStorage[questionsIndex].flagged
+    );
+    flag.setAttribute("class", "fa-solid fa-flag large-icon-02");
   }
   // flag.setAttribute("class", "fa-regular fa-flag large-icon");
   flag.onclick = (e) => flagButtonClicked(e, questionsIndex);

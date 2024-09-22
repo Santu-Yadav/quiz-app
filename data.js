@@ -5,7 +5,7 @@ export const quesionsArray = [
     options: ["div", "span", "header", "img"],
     ans: "header",
     attempted: null,
-    flagged: false,
+    flagged: true,
   },
   {
     key: 1,
@@ -13,7 +13,7 @@ export const quesionsArray = [
     options: ["library", "tool", "langauge", "db"],
     ans: "library",
     attempted: null,
-    flagged: false,
+    flagged: true,
   },
   {
     key: 2,
@@ -21,7 +21,7 @@ export const quesionsArray = [
     options: ["mySql", "mongoDB", "redis", "dynomoDB"],
     ans: "mySql",
     attempted: null,
-    flagged: false,
+    flagged: true,
   },
   {
     key: 3,
@@ -29,7 +29,7 @@ export const quesionsArray = [
     options: ["div", "span", "header", "img"],
     ans: "header",
     attempted: null,
-    flagged: false,
+    flagged: true,
   },
   {
     key: 4,
@@ -37,6 +37,6 @@ export const quesionsArray = [
     options: ["div", "span", "header", "img"],
     ans: "header",
     attempted: null,
-    flagged: false,
+    flagged: true,
   },
 ];

@@ -177,6 +177,16 @@ dialog {
   color: #388e3c;
 }
 
-.tempTesting{
+.tempTesting {
   background-color: red;
+}
+
+.large-icon-01 {
+  font-size: 30px; /* Adjust size as needed */
+  color: rgb(145, 7, 7); /* Initial color */
+}
+
+.large-icon-02 {
+  font-size: 30px; /* Adjust size as needed */
+  color: rgba(37, 36, 36, 0.021);
 }
